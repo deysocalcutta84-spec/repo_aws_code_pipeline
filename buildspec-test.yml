@@ -17,7 +17,7 @@ phases:
 
       # Test 3 - Check HTML structure exists
       - echo 'TEST 3 - Checking valid HTML content...'
-      - grep -q '<html>' index.html && echo 'PASS' || (echo 'FAIL - No HTML tag found!' && exit 1)
+      - grep -qi '<html' index.html && echo 'PASS' || (echo 'FAIL - No HTML tag found!' && exit 1)
 
       # Test 4 - Check appspec.yml exists (needed for CodeDeploy)
       - echo 'TEST 4 - Checking appspec.yml exists...'
