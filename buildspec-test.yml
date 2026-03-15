@@ -1,0 +1,32 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo '=============================='
+      - echo 'Starting Automated Tests...'
+      - echo '=============================='
+
+      # Test 1 - Check index.html file exists
+      - echo 'TEST 1 - Checking index.html exists...'
+      - test -f index.html && echo 'PASS' || (echo 'FAIL - index.html missing!' && exit 1)
+
+      # Test 2 - Check file is not empty
+      - echo 'TEST 2 - Checking file is not empty...'
+      - test -s index.html && echo 'PASS' || (echo 'FAIL - index.html is empty!' && exit 1)
+
+      # Test 3 - Check HTML structure exists
+      - echo 'TEST 3 - Checking valid HTML content...'
+      - grep -q '<html>' index.html && echo 'PASS' || (echo 'FAIL - No HTML tag found!' && exit 1)
+
+      # Test 4 - Check appspec.yml exists (needed for CodeDeploy)
+      - echo 'TEST 4 - Checking appspec.yml exists...'
+      - test -f appspec.yml && echo 'PASS' || (echo 'FAIL - appspec.yml missing!' && exit 1)
+
+      # Test 5 - Check deployment scripts exist
+      - echo 'TEST 5 - Checking deployment scripts exist...'
+      - test -f scripts/start_server.sh && echo 'PASS' || (echo 'FAIL - start_server.sh missing!' && exit 1)
+
+      - echo '=============================='
+      - echo 'ALL TESTS PASSED! Safe to deploy.'
+      - echo '=============================='
