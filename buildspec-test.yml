@@ -4,7 +4,7 @@ phases:
   build:
     commands:
       - echo '=============================='
-      - echo 'Starting Automated Tests...'
+      - echo 'Starting Automated Tests....'
       - echo '=============================='
 
       # Test 1 - Check index.html file exists
